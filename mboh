@@ -1,0 +1,99 @@
+package com.mycompany.praktikum_4;
+
+public class Tugas3 {
+    static class Node {
+        int data;
+        Node left, right;
+
+        public Node(int data) {
+            this.data = data;
+            left = right = null;
+        }
+    }
+
+    Node root;
+public Tugas3() {
+        root = null;
+    }
+
+    void addNode(int data) {
+        root = addNodeRec(root, data);
+    }
+
+    Node addNodeRec(Node current, int data) {
+        if (current == null) {
+            return new Node(data);
+        }
+        if (data < current.data) {
+            current.left = addNodeRec(current.left, data);
+        } else if (data > current.data) {
+            current.right = addNodeRec(current.right, data);
+        } else {
+            return current;
+        }
+        return current;
+    }
+
+    
+    void preorderTraversal(Node node) {
+        if (node == null) {
+            return;
+        }
+        System.out.print(node.data + " ");
+        preorderTraversal(node.left);
+        preorderTraversal(node.right);
+    }
+
+    
+    void inorderTraversal(Node node) {
+        if (node == null) {
+            return;
+        }
+        inorderTraversal(node.left);
+        System.out.print(node.data + " ");
+        inorderTraversal(node.right);
+    }
+
+    
+    void postorderTraversal(Node node) {
+        if (node == null) {
+            return;
+        }
+        postorderTraversal(node.left);
+        postorderTraversal(node.right);
+        System.out.print(node.data + " ");
+    }
+
+    public static void main(String[] args) {
+        
+        System.out.println("Nama :  Ahmad Zulfikar Kurniawan");
+        System.out.println("NIM :  2231730098");
+        System.out.println("Kelas : 1D");
+        Tugas3 tree = new Tugas3();
+
+        // Menambahkan node pada binary tree
+        int[] values = {7, 3, 12, 1, 6, 9, 13, 0, 2, 4, 8, 11, 15, 5, 10, 14};
+        for (int value : values) {
+            tree.addNode(value);
+        }
+
+        // Menelusuri binary tree secara preorder
+        System.out.print("Preorder traversal: ");
+        tree.preorderTraversal(tree.root);
+        System.out.println();
+
+        // Menelusuri binary tree secara inorder
+        System.out.print("Inorder traversal: ");
+        tree.inorderTraversal(tree.root);
+        System.out.println();
+
+        // Menelusuri binary tree secara postorder
+        System.out.print("Postorder traversal: ");
+        tree.postorderTraversal(tree.root);
+        System.out.println();
+    }
+
+}
+
+
+
