@@ -1,0 +1,39 @@
+package com.mycompany.praktikum_4;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Tugas2 {
+    public static void main(String[] args) {
+        System.out.println("Nama    : Ahmad Zulfikar Kurniawan");
+        System.out.println("NIM     : 2231730098");
+        System.out.println("Kelas   : 1D / MI");
+        
+        Map<String, Map<String, Integer>> graph = new HashMap<>();
+
+        graph.put("A", new HashMap<>());
+        graph.put("B", new HashMap<>());
+        graph.put("C", new HashMap<>());
+        graph.put("D", new HashMap<>());
+        graph.put("E", new HashMap<>());
+
+//        graph.get("A").p
+        graph.get("A").put("E", 7);
+        graph.get("E").put("D", 5);
+        graph.get("D").put("C", 2);
+        graph.get("C").put("B", 3);
+
+        
+        int distance = 0;
+        String[] path = {"A", "E", "D", "C", "B"};
+        for (int i = 0; i < path.length - 1; i++) {
+            String current = path[i];
+            String next = path[i + 1];
+            distance += graph.get(current).get(next);
+        }
+
+        System.out.println("Jarak tempuh jalur A-E-D-C-B: " + distance);
+    }
+}
+    
+
