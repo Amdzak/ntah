@@ -1,0 +1,60 @@
+package com.mycompany.praktikum_4;
+
+import java.util.Scanner;
+
+
+public class Tugas1 {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.println("*****************************************");
+        System.out.println("        REPRESENTASI GRAF BERBOBOT       ");
+        System.out.println("           (Matriks Adjacency)           ");
+        System.out.println("*****************************************");
+        System.out.println("");
+        
+        System.out.println("Nama    : Ahmad Zulfikar Kurniawan");
+        System.out.println("NIM     : 2231730098");
+        System.out.println("Kelas   : 1D / MI");
+        
+        System.out.print("Masukkan banyak node graf : ");
+        int n = s.nextInt();
+        
+        String[] label = new String[n];
+        int[][] adjacency = new int[n][n];
+        
+        for (int i = 0; i < n; i++){
+            System.out.print(" > Masukkan label node ke- " + i + " = ");
+            label[i] = s.next();
+        }
+        System.out.println("");
+        
+        System.out.println("        (Keterhubungan Node)        ");
+        System.out.println("------------------------------------");
+        for (int i = 0; i < n; i++){
+            for (int j = i + 1; j < n; j++){
+                System.out.print("Berapa bobot " + label[i] + " dan " + label[j] + " ? ");
+                adjacency[i][j] = s.nextInt();
+                adjacency[j][i] = adjacency[i][j];
+                }
+            }
+        
+        System.out.println("");
+        
+        System.out.println("        (Matriks Adjacency)     ");
+        System.out.println("--------------------------------");
+        for (int i = 0; i < n; i++){
+            System.out.print("\t" + label[i]);
+        }
+        System.out.println("");
+        
+        for (int i = 0; i < n; i++){
+            System.out.print(label[i]);
+            for (int j = 0; j < n; j++){
+                System.out.print("\t" + adjacency[i][j]);
+            }
+            System.out.println("");
+        }
+    }
+}
+    
+
